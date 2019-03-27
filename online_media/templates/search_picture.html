@@ -1,0 +1,26 @@
+
+{%extends 'my-inst/base.html'%} 
+{% block content %}
+<div class="container" style="margin-top: 200px">
+
+  <div class="row">
+    {% if pictures %}
+      <h2>Found {{ pictures|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 profiles for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if pictures %}
+    {% for picture in pictures %}
+      <div class="col-sm-6 col-md-12">
+          <h1>{{picture.first_name}}</h1>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}
