@@ -53,13 +53,13 @@ def timeline(request):
 	comment = Comment.objects.order_by('-time_comment')
 	
 
-	return render(request, 'my-online_media/timeline.html',{"Myprofile":Myprofile,"comment":comment})
+	return render(request, 'media/timeline.html',{"Myprofile":Myprofile,"comment":comment})
 
 @login_required(login_url='/accounts/login/')
 def single_picture(request,picture_id):
 	picture = picture.objects.get(id= picture_id)
 
-	return render(request, 'my-online_media/single_picture.html',{"picture":picture})
+	return render(request, 'media/single_picture.html',{"picture":picture})
 
 @login_required(login_url='/accounts/login/')
 def like(request,pic_id):
@@ -133,5 +133,5 @@ def send(request):
             return redirect( timeline)
     else:
         form = ImageForm() 
-    return render(request, 'my-online_media/send.html',{"form" : form}) 
+    return render(request, 'media/send.html',{"form" : form}) 
 
