@@ -1,5 +1,5 @@
 from django.contrib import admin
-om .models import Picture,Profile,Comment,Follow, Unfollow, Likes
+from .models import Picture,Profile,Comment,Follow, Unfollow, Likes
 admin.site.register(Picture)
 admin.site.register(Profile)
 admin.site.register(Comment)
