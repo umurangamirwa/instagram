@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Africa/Rwanda'
+TIME_ZONE = 'Africa/Kigali'
 
 USE_I18N = True
 
