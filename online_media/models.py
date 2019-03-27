@@ -70,7 +70,7 @@ class Profile(models.Model):
         
 class Comment(models.Model):
 	user = models.ForeignKey(User, null= True)
-	picture = models.ForeignKey(Pic, null= True,related_name='comment')
+	picture = models.ForeignKey(Picture, null= True,related_name='comment')
 	comment= models.TextField( blank=True)
 	
 	def __str__(self):
