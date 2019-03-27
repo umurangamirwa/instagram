@@ -61,13 +61,13 @@ class Profile(models.Model):
 		self.delete()
 
 	def save_profile(self):
-		self.sa# pic = models.ForeignKey(Pic,null=True)e()
+		self.save()
 
-	@classmetho# pic = models.ForeignKey(Pic,null=True)
-	def search_# pic = models.ForeignKey(Pic,null=True)rofile(cls,search_term):
-		got_pro# pic = models.ForeignKey(Pic,null=True)iles = cls.objects.filter(first_name__icontains = search_term)
-		return # pic = models.ForeignKey(Pic,null=True)ot_profiles
-
+	@classmethod
+	def search_profile(cls,search_term):
+		got_profiles = cls.objects.filter(first_name__icontains = search_term)
+		return got_profiles
+        
 class Comment(models.Model):
 	user = models.ForeignKey(User, null= True)
 	picture = models.ForeignKey(Pic, null= True,related_name='comment')
