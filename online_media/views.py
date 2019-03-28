@@ -91,6 +91,7 @@ def upload_profile(request):
             form = ProfileUploadForm(request.POST,request.FILES)
 
             if form.is_valid():
+                
                 requested_profile.profile_pic = form.cleaned_data['profile_picture']
                 requested_profile.bio = form.cleaned_data['bio']
                 requested_profile.username = form.cleaned_data['username']
@@ -112,26 +113,38 @@ def upload_profile(request):
 
     return render(request,'upload_profile.html',{"title":title,"current_user":current_user,"form":form})
 
-
 @login_required(login_url='/accounts/login/')
-def send(request):
-    '''
-    View function that displays a forms that allows users to upload images
-    '''
-    current_user = request.user
+def upload_images(request):
+    current_user = request.user 
+    title = 'Upload Images'
+    try:
+        requested_profile = Profile.objects.get(user_id = current_user.id)
+        if request.method == 'POST':
+            form = ProfileForm(request.POST,request.FILES)
 
-    if request.method == 'POST':
+            if form.is_valid():
+                
+                requested_profile.profile_pic = form.cleaned_data['profile_picture']
+                requested_profile.bio = form.cleaned_data['bio']
+                requested_profile.username = form.cleaned_data['username']
+                requested_profile.save_profile()
+                return redirect( profile )
+        else:
+            form = ProfileForm()
+    except:
+        if request.method == 'POST':
+            form = ProfileForm(request.POST,request.FILES)
 
-        form = ImageForm(request.POST ,request.FILES)
+            if form.is_valid():
+                new_profile = Profile(profile_picture = form.cleaned_data['profile_picture'],bio = form.cleaned_data['bio'],username = form.cleaned_data['username'])
+                new_profile.save_profile()
+                return redirect( images )
+        else:
+            form = ProfileForm()
 
-        if form.is_valid():
-            image = form.save(commit = False)
-            image.user_key = current_user
-            image.likes +=0
-            image.save() 
 
-            return redirect( timeline)
-    else:
-        form = ImageForm() 
-    return render(request, 'media/send.html',{"form" : form}) 
+    return render(request,'upload_profile.html',{"title":title,"current_user":current_user,"form":form})
+
+
+
 
