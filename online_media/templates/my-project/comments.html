@@ -1,4 +1,4 @@
-{% extends 'my-inst/base.html'%} 
+{% extends 'my-project/base.html'%} 
 {% load staticfiles%}
 {% load bootstrap3 %} 
 {% block content %}
@@ -19,7 +19,7 @@
     <input type="hidden" name="next" value="{{next}}">
     </form>
 
-    <p><a href="{% url 'timeline' %}">Previous</a></p>
+    
     </div>
 </div>
 {% endblock %}

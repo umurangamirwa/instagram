@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from . forms import ProfileUploadForm,CommentForm,ProfileForm,ImageUploadForm,ImageForm
 from django.http  import HttpResponse
-from . models import Picture ,Profile, Likes, Follow, Comment,Unfollow
+from . models import Image,Profile, Likes, Follow, Comment,Unfollow
 from django.conf import settings
 
 
@@ -10,16 +10,16 @@ from django.conf import settings
 @login_required(login_url='/accounts/login/')
 def index(request):
       title = 'Instagram'
-      picture = Picture.objects.all()
+      image_posts = Image.objects.all()
       
-      print(picture)
-      return render(request, 'index.html', {"title":title,"picture":picture})
+      print(image_posts)
+      return render(request, 'index.html', {"title":title,"image_posts":image_posts})
 
 
 @login_required(login_url='/accounts/login/')
 def comment(request,id):
 	
-	post = get_object_or_404(Picture,id=id)	
+	post = get_object_or_404(Image,id=id)	
 	current_user = request.user
 	print(post)
 
@@ -29,7 +29,7 @@ def comment(request,id):
 		if form.is_valid():
 			comment = form.save(commit=False)
 			comment.user = current_user
-			comment.picture = post
+			comment.image = post
 			comment.save()
 			return redirect('index')
 	else:
@@ -47,8 +47,8 @@ def profile(request):
 	 return render(request, 'profile.html',{"current_user":current_user,"profile":profile,"follower":follower})
 
 @login_required(login_url='/accounts/login/')
-def like(request,picture_id):
-	Picture = Picture.objects.get(id=picture_id)
+def like(request,image_id):
+	image = Image.objects.get(id=image_id)
 	like +=1
 	save_like()
 	return redirect(timeline)
@@ -118,7 +118,7 @@ def upload_images(request):
            
     else:
         form = ImageForm() 
-    return render(request, 'media/upload_images.html',{"form" : form}) 
+    return render(request, 'my-project/upload_images.html',{"form" : form}) 
 
 
 
