@@ -100,36 +100,25 @@ def upload_profile(request):
 
 @login_required(login_url='/accounts/login/')
 def upload_images(request):
-    current_user = request.user 
-    title = 'Upload Images'
-    try:
-        requested_profile = Profile.objects.get(user_id = current_user.id)
-        if request.method == 'POST':
-            form = ProfileForm(request.POST,request.FILES)
+    '''
+    View function that displays a forms that allows users to upload images
+    '''
+    current_user = request.user
 
-            if form.is_valid():
-                
-                requested_profile.profile_pic = form.cleaned_data['profile_picture']
-                requested_profile.bio = form.cleaned_data['bio']
-                requested_profile.username = form.cleaned_data['username']
-                requested_profile.save_profile()
-                return redirect( profile )
-        else:
-            form = ProfileForm()
-    except:
-        if request.method == 'POST':
-            form = ProfileForm(request.POST,request.FILES)
+    if request.method == 'POST':
 
-            if form.is_valid():
-                new_profile = Profile(profile_picture = form.cleaned_data['profile_picture'],bio = form.cleaned_data['bio'],username = form.cleaned_data['username'])
-                new_profile.save_profile()
-                return redirect( images )
-        else:
-            form = ProfileForm()
+        form = ImageForm(request.POST ,request.FILES)
 
+        if form.is_valid():
+            image = form.save(commit = False)
+            image.user_key = current_user
+           
+            image.save() 
 
-    return render(request,'upload_profile.html',{"title":title,"current_user":current_user,"form":form})
-
+           
+    else:
+        form = ImageForm() 
+    return render(request, 'profile/upload_images.html',{"form" : form}) 
 
 
 
