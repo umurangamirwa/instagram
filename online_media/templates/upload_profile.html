@@ -2,7 +2,21 @@
 {% load staticfiles%}
 {% load bootstrap3 %}
  {%block content%}
-
+ <!DOCTYPE html>
+ <html>
+ 
+ <head>
+    <body>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+   <title>New Image</title>
+   {{form.media}}
+ 
+ {% block styles %} {% bootstrap_css %}
+   <link rel="stylesheet" href="{% static 'css/basephotos.css' %}"> {% endblock %}
+ 
+ </head>
 <div class="well" style="margin-bottom:  -200px">
 <div class="col-md-3 "></div>
     <form method="post" enctype="multipart/form-data">
@@ -15,3 +29,5 @@
     </div>
     
 {% endblock %}
+</body>
+ </html>
