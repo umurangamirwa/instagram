@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment,Profile,Picture
+from .models import Comment,Profile,Picture,Image
 from django.contrib.auth.forms import AuthenticationForm
 
 class ProfileForm(forms.ModelForm):
@@ -21,3 +21,14 @@ class CommentForm(forms.ModelForm):
 		model = Comment
 		
 		exclude = ['user','picture',]
+class ImageForm(forms.ModelForm):
+	class Meta:
+		model = Image
+		
+		exclude = ['user']
+
+class ImageUploadForm(forms.ModelForm):
+	class Meta:
+		model = Image
+		
+		exclude = ['user']

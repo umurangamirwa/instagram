@@ -10,10 +10,10 @@ from django.conf import settings
 @login_required(login_url='/accounts/login/')
 def index(request):
       title = 'Instagram'
-      picture_posts = Picture.objects.all()
+      picture = Picture.objects.all()
       
-      print(picture_posts)
-      return render(request, 'index.html', {"title":title,"picture_posts":picture_posts})
+      print(picture)
+      return render(request, 'index.html', {"title":title,"picture":picture})
 
 
 @login_required(login_url='/accounts/login/')
@@ -118,7 +118,7 @@ def upload_images(request):
            
     else:
         form = ImageForm() 
-    return render(request, 'profile/upload_images.html',{"form" : form}) 
+    return render(request, 'media/upload_images.html',{"form" : form}) 
 
 
 
