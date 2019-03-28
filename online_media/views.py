@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from . forms import ProfileUploadForm,CommentForm,ProfileForm
+from . forms import ProfileUploadForm,CommentForm,ProfileForm,ImageUploadForm,ImageForm
 from django.http  import HttpResponse
 from . models import Picture ,Profile, Likes, Follow, Comment,Unfollow
 from django.conf import settings
