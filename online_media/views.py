@@ -47,22 +47,7 @@ def profile(request):
 	 return render(request, 'profile.html',{"current_user":current_user,"profile":profile,"follower":follower})
 
 @login_required(login_url='/accounts/login/')
-def timeline(request):
-	current_user = request.user 
-	Myprofile = Profile.objects.order_by('-time_uploaded')
-	comment = Comment.objects.order_by('-time_comment')
-	
-
-	return render(request, 'media/timeline.html',{"Myprofile":Myprofile,"comment":comment})
-
-@login_required(login_url='/accounts/login/')
-def single_picture(request,picture_id):
-	picture = picture.objects.get(id= picture_id)
-
-	return render(request, 'media/single_picture.html',{"picture":picture})
-
-@login_required(login_url='/accounts/login/')
-def like(request,pic_id):
+def like(request,picture_id):
 	Picture = Picture.objects.get(id=picture_id)
 	like +=1
 	save_like()
