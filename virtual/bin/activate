@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/saphani/Desktop/core/gallery/virtual"
+VIRTUAL_ENV="/home/wecode/Desktop/instagram/virtual"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -5,7 +5,7 @@ from tinymce.models import HTMLField
 # Create your models here.
 class Picture(models.Model):
     picture = models.ImageField(upload_to = "pictures/",null = True)
-    user = models.ForeignKey(User,null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     picture_name = models.CharField(max_length = 30,null = True)
     likes = models.IntegerField(default=0)
     picture_caption = models.TextField(null = True)
@@ -69,8 +69,8 @@ class Profile(models.Model):
 		return got_profiles
         
 class Comment(models.Model):
-	user = models.ForeignKey(User, null= True)
-	picture = models.ForeignKey(Picture, null= True,related_name='comment')
+	user = models.ForeignKey(User,on_delete=models.CASCADE)
+	picture = models.ForeignKey(Picture,on_delete=models.CASCADE,null= True,related_name='comment')
 	comment= models.TextField( blank=True)
 	
 	def __str__(self):
@@ -84,8 +84,8 @@ class Comment(models.Model):
 		self.save()
 
 class Follow(models.Model):
-	user = models.ForeignKey(Profile,null=True)
-	follower = models.ForeignKey(User,null=True)
+	user = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
+	follower = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 	def __int__(self):
 		return self.name
@@ -97,14 +97,14 @@ class Follow(models.Model):
 		self.save()
 
 class Unfollow(models.Model):
-	user = models.ForeignKey(Profile,null=True)
-	follower = models.ForeignKey(User,null=True)
+	user = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
+	follower = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 	def __int__(self):
 		return self.name
 
 class Likes(models.Model):
-	user = models.ForeignKey(Profile,null=True)
+	user = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
 	
 
 	def __int__(self):

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "media/base.html" %}
 {% block content %}
 {{block.super}}
   
@@ -13,7 +13,7 @@
 <h5 style="float: left; margin-left: 20px; font-size: 30px; font-weight: bold; margin-top: -1px">
     {{profile.username}}</h5>
 <i class="fa fa-gear" style="font-size:24px; float: right;  margin-left: 30px"></i>
-<a style= "" href="{% url 'upload_profile'%}"><button class="btn btn-primary" style="background-color: #EEEEEE; color: black; float: right; margin-left: 30px; height: 30px">Edit Profile</button></a> 
+<a style="" href="{% url 'upload_profile'%}"><button class="btn btn-primary" style="background-color: #EEEEEE; color: black; float: right; margin-left: 30px; height: 30px">Edit Profile</button></a> 
 </div>
              
 <hr>
