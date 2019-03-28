@@ -2,51 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
-# Create your models here.
-# class Image(models.Model):
-#     image = models.ImageField(upload_to = "images/",null = True)
-#     user = models.ForeignKey(User,on_delete=models.CASCADE)
-#     image_name = models.CharField(max_length = 30,null = True)
-#     likes = models.IntegerField(default=0)
-#     image_caption = models.TextField(null = True)
-#     pub_date = models.DateTimeField(auto_now_add=True,null=True)
-#     comments = models.IntegerField(default=0)
-
-
-    # def __str__(self):
-    # 	return self.image_name
-
-    # def delete_image(self):
-    # 	self.delete()
-
-    # def save_image(self):
-    # 	self.save()
-
-    # def update_caption(self,new_caption):
-    # 	self.image_caption = new_caption
-    # 	self.save()
-
-
-    # @classmethod
-    # def get_images_by_user(cls,id):
-    #     sent_images= Image.objects.filter(user_id=id)
-    #     return sent_images
-
-    # @classmethod
-    # def get_images_by_id(cls,id):
-    #     fetched_image = Image.objects.get(id = id)
-    #     return  fetched_image
-
-    # class Meta:
-    # 	ordering = ['-pub_date']
-
-
-    # def __str__(self):
-    # 	return self.user.username
-
-    # def save_profile(self):
-    # 	self.save()
-
 class Profile(models.Model):
 	username = models.CharField(default='User',max_length=30)
 	profile_picture = models.ImageField(upload_to = "profile/",null=True)
