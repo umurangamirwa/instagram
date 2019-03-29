@@ -1,7 +1,7 @@
 {% extends 'my-project/base.html' %} 
 
 {% block content %}
-<div class="container top" style="background-color: lightpink;font-size: 20px" >
+<div class="container top"  >
  
     <div class="jumbstron">
         
@@ -10,8 +10,8 @@
                 <p class="home-text">
                     <a href="{% url 'profile' %}">{{image.profile.username}}</a>
                 </p>
-            <div class="col-md-4" style="margin-bottom: 20px" >
-                <img src="{{image.image.url}}" style="width: 200px; height: 200px;" alt="Image">
+            <div class="col-md-4" style="margin-bottom: 30px" >
+                <img src="{{image.image.url}}" style="width: 250px; height: 250px;" alt="Image">
               
                 <ul class="list-inline home-list">
                     <li class="list-inline-item">

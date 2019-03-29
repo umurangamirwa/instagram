@@ -54,12 +54,12 @@ def like(request,image_id):
 	return redirect(timeline)
 
 def search_results(request):
-    if 'picture' in request.GET and request.GET["picture"]:
-        search_term = request.GET.get("picture")
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
         searched_profiles = Profile.search_profile(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search_picture.html',{"message":message,"pictures": searched_profiles})
+        return render(request, 'search_picture.html',{"message":message,"images": searched_profiles})
 
     else:
         message = "You haven't searched for any term"
