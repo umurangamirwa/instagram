@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from . forms import ProfileUploadForm,CommentForm,ProfileForm,ImageUploadForm,ImageForm
+from . forms import ProfileUploadForm,ProfileForm,ImageUploadForm,ImageForm,RatingForm
 from django.http  import HttpResponse
 from . models import Image,Profile, Likes, Follow, Comment,Unfollow
 from django.conf import settings
@@ -42,7 +42,7 @@ def comment(request,id):
 def profile(request):
 	 current_user = request.user
 	 profile = Profile.objects.all()
-	 follower = Follow.objects.filter(user = profile)
+	#  follower = Follow.objects.filter(user = profile)
 
 	 return render(request, 'profile.html',{"current_user":current_user,"profile":profile,"follower":follower})
 

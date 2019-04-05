@@ -30,7 +30,7 @@ class Image(models.Model):
     likes = models.IntegerField(default=0)
     image_caption = models.TextField(null = True)
     pub_date = models.DateTimeField(auto_now_add=True,null=True)
-    comments = models.IntegerField(default=0)
+    comments = models.CharField(max_length = 40,null = True)
 
     def __str__(self):
     	return self.image_name

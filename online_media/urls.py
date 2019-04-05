@@ -7,7 +7,7 @@ urlpatterns=[
     
     url('^$',views.index, name='index'),
     url(r'^$',views.profile,name = 'profile'),
-    url(r'^comment/(?P<id>\d+)', views.comment, name='comment'),
+    # url(r'^comment/(?P<id>\d+)', views.comment, name='comment'),
     url(r'^profile/', views.profile, name='profile'),
     url(r'^upload/images', views.upload_images, name='upload_images'),
     url(r'^search/', views.search_results, name='search_results'),
