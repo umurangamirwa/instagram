@@ -11,7 +11,9 @@ application will be able to upload and update profile,upload images,comment on i
 
 To start using this project use the following commands:
 
-To clone this click here https://github.com/umurangamirwa/instagram
+* https://instagram1312.herokuapp.com/
+
+* To clone this click here https://github.com/umurangamirwa/instagram
 
 ### Run this command lines in your terminal:
 
